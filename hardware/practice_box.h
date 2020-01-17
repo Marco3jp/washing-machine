@@ -24,7 +24,7 @@ __CONFIG(WRT_OFF & BOR4V_BOR40V);
 #endif
 
 /* Practice Box subroutine */
-void practice_Box_init( void );
+void init_practice_Box( void );
 void move_Box_Motor( int no, int move );
 void light_Box_LED( int no, int light );
 char read_Box_SW( int no );

@@ -25,7 +25,7 @@
 #include "lcd_disp.h"
 /* #include "sensor.h" */
 
-void practice_Box_init( void )
+void init_practice_Box( void )
 {
     /* Set Port B config */
     /* This port B was set by pic_init() */
