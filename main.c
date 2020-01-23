@@ -14,8 +14,8 @@
 #include "menu/process.h"
 
 enum course_name course = course_name.NORMAL;
-enum process_type process = process_type.WASH_RINS_SPIN;
-unsigned int process_timer = {0, 0, 0, 0, 0}; // wash, rins, rins, rins, spin
+enum process_type process = process_type.WASH_RINSE_SPIN;
+unsigned int process_timer = {0, 0, 0, 0, 0}; // wash, rinse, rinse, rinse, spin
 int current_process = -1; // -1 means isProcessing === false, other value means process_timer index.
 
 void main(void) {

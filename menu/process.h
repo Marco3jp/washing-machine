@@ -1,13 +1,13 @@
 enum process_name {
     WASH,
-    RINS,
+    RINSE,
     SPIN
 };
 
 enum process_type {
-    WASH_RINS_SPIN,
-    RINS_SPIN,
-    RINS,
+    WASH_RINSE_SPIN,
+    RINSE_SPIN,
+    RINSE,
     SPIN
 };
 
