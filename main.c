@@ -19,9 +19,9 @@ unsigned int process_timer = {0, 0, 0, 0, 0}; // wash, rins, rins, rins, spin
 int current_process = -1; // -1 means isProcessing === false, other value means process_timer index.
 
 void main(void) {
-    init_pic(); /* PIC kit board initilize */
-    init_lcd(); /* LCD unit initilize */
-    init_practice_Box(); /* Practice BOX initilize */
+    init_pic(); /* PIC kit board initialize */
+    init_lcd(); /* LCD unit initialize */
+    init_practice_Box(); /* Practice BOX initialize */
 
     write_str("Hello World!");
 
