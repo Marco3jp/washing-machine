@@ -1,7 +1,6 @@
-/* 
- * File:   init.h
- * Author: marco
- *
- * Created on January 23, 2020, 12:18 PM
- */
+#ifndef INIT_H
+#define INIT_H
+
 static void init_pic();
+
+#endif

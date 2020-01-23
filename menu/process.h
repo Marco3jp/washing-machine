@@ -1,3 +1,6 @@
+#ifndef PROCESS_H
+#define PROCESS_H
+
 enum process_name {
     WASH,
     RINSE,
@@ -14,3 +17,5 @@ enum process_type {
 int is_processing();
 void set_process_type(enum process_type *);
 void increment_process_type();
+
+#endif
