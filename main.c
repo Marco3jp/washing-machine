@@ -15,7 +15,7 @@
 
 enum course_name course = course_name.NORMAL;
 enum process_type process = process_type.WASH_RINS_SPIN;
-unsigned int process_timer = {0,0,0,0,0}; // wash, rins, rins, rins, spin
+unsigned int process_timer = {0, 0, 0, 0, 0}; // wash, rins, rins, rins, spin
 int current_process = -1; // -1 means isProcessing === false, other value means process_timer index.
 
 void main(void) {
@@ -26,17 +26,16 @@ void main(void) {
     write_str("Hello World!");
 
     char sw_stat;
-    
+
     while (1) {
         sw_stat = PORTB;
-        
-        if( (sw_stat& 0b01000000) == 0 && !is_processing() ) { // sw6
+
+        if ((sw_stat & 0b01000000) == 0 && !is_processing()) { // sw6
             increment_process_type();
         }
-        
-        if( (sw_stat& 0b10000000) == 0 && !is_processing() ) { // sw7
+
+        if ((sw_stat & 0b10000000) == 0 && !is_processing()) { // sw7
             increment_course();
         }
-        
     }
 }
