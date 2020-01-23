@@ -10,28 +10,6 @@
 #include "init.h"
 #include "hardware/lcd_disp.h"
 #include "hardware/practice_box.h"
-#include "course.h"
-#include "process/manager.h"
-
-
-enum course_name {
-    NORMAL,
-    QUICK,
-    HEAVY
-};
-
-enum process_name {
-    WASH,
-    RINS,
-    SPIN
-};
-
-enum process_type {
-    WASH_RINS_SPIN,
-    RINS_SPIN,
-    RINS,
-    SPIN
-};
 
 enum course_name course = course_name.NORMAL;
 enum process_type process = process_type.WASH_RINS_SPIN;
