@@ -7,14 +7,12 @@
 
 
 #include <pic.h>
+#include "init.h"
 #include "hardware/lcd_disp.h"
 #include "hardware/practice_box.h"
 #include "course.h"
 #include "process/manager.h"
 
-static void init_pic() {
-    // OSCCON = 0x70; // INTOSC 8MHz
-    PSTRCON = 0x00; // assigned to port pin
 
 enum course_name {
     NORMAL,
