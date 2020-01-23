@@ -20,19 +20,19 @@ void main(void) {
     write_str("Hello World!");
 
     char sw_stat;
-    char hasNewCourse = 0;
+    char has_new_course = 0;
     
     while (1) {
         sw_stat = PORTB;
         
         if( (sw_stat& 0b10000000) == 0 && !is_processing() ) { // sw7
             increment_course();
-            hasNewCourse = 1;
+            has_new_course = 1;
         }
         
-        if (hasNewCourse == 1) {
+        if (has_new_course == 1) {
             write_str("course_id: " + course);
-            hasNewCourse = 0;
+            has_new_course = 0;
         }
     }
 }

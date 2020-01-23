@@ -22,19 +22,19 @@ void main(void) {
     init_practice_Box(); /* Practice BOX initialize */
 
     char sw_stat;
-    char hasNewProcess = 0;
+    char has_new_process = 0;
 
     while (1) {
         sw_stat = PORTB;
 
         if ((sw_stat & 0b01000000) == 0 && !is_processing()) { // sw6
             increment_process_type();
-            hasNewProcess = 1;
+            has_new_process = 1;
         }
 
-        if (hasNewProcess == 1) {
+        if (has_new_process == 1) {
             write_str("process_id: " + process);
-            hasNewProcess = 0;
+            has_new_process = 0;
         }
     }
 }
