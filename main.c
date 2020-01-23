@@ -9,34 +9,36 @@
 #include <pic.h>
 #include "hardware/lcd_disp.h"
 #include "hardware/practice_box.h"
+#include "course.h"
+#include "process/manager.h"
 
 static void init_pic() {
     // OSCCON = 0x70; // INTOSC 8MHz
     PSTRCON = 0x00; // assigned to port pin
 
-    /* Set Port B*/
-    ANSELH = 0x00; // AN Disable (RB5-RB0)
-    WPUB = 0x00; // Pull-up disable
-    INTCON = 0x00; // Intrauppt disable
-    IOCB = 0x00; // Intrauppt charge disable
-    CCP1CON = 0x00;
-    CM2CON1 = 0x02;
-    OPTION_REG = 0xFF; // Pull-up disable
+enum course_name {
+    NORMAL,
+    QUICK,
+    HEAVY
+};
 
-    TRISB = 0xFF; // IN
-    // PORTB = 0x11; // High
+enum process_name {
+    WASH,
+    RINS,
+    SPIN
+};
 
+enum process_type {
+    WASH_RINS_SPIN,
+    RINS_SPIN,
+    RINS,
+    SPIN
+};
 
-    /* Set Port C */
-    RCSTA = 0x00; // Serial disable (RC7-6)
-    SSPCON = 0x00; // Serial disable (RC5-4)
-
-    TRISC = 0x00; // OUT
-    PORTC = 0x00; // Low
-
-    /* Set Port D config */
-    TRISD = 0xC0; // bit 0-5 OUT, bit6-7 IN
-}
+enum course_name course = course_name.NORMAL;
+enum process_type process = process_type.WASH_RINS_SPIN;
+unsigned int process_timer = {0,0,0,0,0}; // wash, rins, rins, rins, spin
+int current_process = -1; // -1 means isProcessing === false, other value means process_timer index.
 
 void main(void) {
     init_pic(); /* PIC kit board initilize */
@@ -45,7 +47,18 @@ void main(void) {
 
     write_str("Hello World!");
 
+    char sw_stat;
+    
     while (1) {
-
+        sw_stat = PORTB;
+        
+        if( (sw_stat& 0b01000000) == 0 && !is_processing() ) { // sw6
+            increment_process_type();
+        }
+        
+        if( (sw_stat& 0b10000000) == 0 && !is_processing() ) { // sw7
+            increment_course();
+        }
+        
     }
 }
