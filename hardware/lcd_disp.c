@@ -69,7 +69,7 @@ void disp_number( int number, int x, int y )
     // num = (char)number + 0x30;    /* Set Ascii code */
     sprintf(num, "%d", number);
 
-    locate( x, y );
+    locate( x, y ); 
     write_str(num);    /* Display number */
 }
 

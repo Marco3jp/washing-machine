@@ -1,7 +1,7 @@
 #include <pic.h>
 #include "init.h"
 
-static void init_pic() {
+void init_pic() {
     // OSCCON = 0x70; // INTOSC 8MHz
     PSTRCON = 0x00; // assigned to port pin
 
@@ -27,4 +27,8 @@ static void init_pic() {
 
     /* Set Port D config */
     TRISD = 0xC0; // bit 0-5 OUT, bit6-7 IN
+    
+    // for timer
+    T0IE = 1;   /* Enable Interrupt */
+    GIE = 1;    /* Enable Global Interrupt */
 }
